@@ -23,13 +23,13 @@ const Task = (props) => {
     const updateTask = () => {
         setState({
             key: state.key,
-            name: state.key,
+            name: state.name,
             done: !state.done
         })
     }
     return (
         <View style={styles.view}>
-            <Text>{props.task.name}</Text>
+            <Text>{state.name}</Text>
             <CheckBox onValueChange={updateTask} value={state.done}/>
         </View>
     )
