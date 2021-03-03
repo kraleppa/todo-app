@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 const TaskList = () => {
     return (
         <View style={styles.container}>
-            <FlatList data={taskMock} renderItem={({item}) => <Task name={item.name}/>} />
+            <FlatList data={taskMock} renderItem={({item}) => <Task task={item}/>}/>
         </View>
     );
 }

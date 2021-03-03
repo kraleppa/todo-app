@@ -1,21 +1,37 @@
-import React from 'react';
-import {Text, StyleSheet} from "react-native";
+import React, {useState} from 'react';
+import {Text, StyleSheet, View, CheckBox} from "react-native";
 
 const styles = StyleSheet.create({
-    item: {
+    view: {
         fontSize: 15,
         height: 40,
         marginTop: 10,
         paddingLeft: 10,
-        textAlignVertical: "center",
-
-        backgroundColor: "blue"
+        paddingRight: 10,
+        backgroundColor: "blue",
+        alignItems: "center",
+        justifyContent: "space-between",
+        flex: 1,
+        flexDirection: "row"
     }
 })
 
 const Task = (props) => {
+
+    const [state, setState] = useState(props.task);
+
+    const updateTask = () => {
+        setState({
+            key: state.key,
+            name: state.key,
+            done: !state.done
+        })
+    }
     return (
-        <Text style={styles.item}>{props.name}</Text>
+        <View style={styles.view}>
+            <Text>{props.task.name}</Text>
+            <CheckBox onValueChange={updateTask} value={state.done}/>
+        </View>
     )
 }
 
