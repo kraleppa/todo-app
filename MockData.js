@@ -46,5 +46,25 @@ export const taskMock = [
     {
         key: '12',
         name: "Coś tam zrobić niezbyt fajnego"
+    },
+    {
+        key: '13',
+        name: "Coś tam zrobić niezbyt fajnego"
+    },
+    {
+        key: '14',
+        name: "Posprzątać pokój"
+    },
+    {
+        key: '15',
+        name: "Iść z psem na spacer"
+    },
+    {
+        key: '16',
+        name: "Coś tam zrobić niezbyt fajnego"
+    },
+    {
+        key: '17',
+        name: "Coś tam zrobić niezbyt fajnego"
     }
 ]

@@ -1,27 +1,22 @@
 import React from "react";
 import {FlatList, StyleSheet, Text, View, ScrollView} from "react-native";
 import { taskMock } from "../MockData";
+import Task from "./Task";
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 60,
+        marginTop: "10%",
         width: "100%"
-    },
-    item: {
-        padding: 10,
-        fontSize: 10,
-        height: 40,
-    },
+    }
 });
 
 
 const TaskList = () => {
     return (
-        <ScrollView style={styles.container}>
-            <FlatList data={taskMock}
-                      renderItem={({item}) => <Text style={styles.item}>{item.name}</Text>}/>
-        </ScrollView>
+        <View style={styles.container}>
+            <FlatList data={taskMock} renderItem={({item}) => <Task name={item.name}/>} />
+        </View>
     );
 }
 
