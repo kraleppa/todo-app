@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Text, StyleSheet, View, CheckBox} from "react-native";
+import {API_KEY} from "./ApiKey";
 
 const styles = StyleSheet.create({
     view: {
@@ -26,6 +27,20 @@ const Task = (props) => {
             name: state.name,
             done: !state.done
         })
+
+        fetch(`https://api.airtable.com/v0/appgcXYlwEoacIrsU/Tasks/${state.key}`, {
+            method: 'PATCH',
+            headers: {
+                'Authorization': `Bearer ${API_KEY}`,
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify({
+                "fields": {
+                    "done": !state.done
+                }
+            })
+        })
+            .then(data => data.json())
     }
 
     return (

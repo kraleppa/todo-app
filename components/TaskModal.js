@@ -42,7 +42,7 @@ const TaskModal = ({modalVisible, closeModal}) => {
             })
         })
             .then(data => data.json())
-            .then(() => close())
+        close();
 
     }
 
