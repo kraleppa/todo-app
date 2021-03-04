@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import {Button, Modal, Text, TextInput, View, StyleSheet, AsyncStorage} from "react-native";
+import {Button, Modal, Text, TextInput, View, StyleSheet} from "react-native";
+import API_KEY from "./ApiKey"
 
 const styles = StyleSheet.create({
     modal: {
@@ -27,20 +28,24 @@ const styles = StyleSheet.create({
 const TaskModal = ({modalVisible, closeModal}) => {
     const [name, setName] = useState("");
 
+
+
     const saveTask = () => {
-        console.log(name);
+        console.log(name)
+    }
+
+    const close = () => {
+        setName("");
+        closeModal();
     }
 
     return (
-        <Modal
-            animationType="slide"
-            visible={modalVisible}
-        >
+        <Modal animationType="slide" visible={modalVisible} onRequestClose={close}>
             <View style={styles.modal}>
                 <Text>Dodaj zadanie</Text>
                 <TextInput style={styles.input} onChangeText={text => setName(text)} value={name}/>
                 <View style={styles.lowerView}>
-                    <Button title="Zamknij" onPress={() => {setName(""); closeModal();}}/>
+                    <Button title="Zamknij" onPress={close}/>
                     <Button title="Dodaj" onPress={saveTask}/>
                 </View>
             </View>

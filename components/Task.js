@@ -27,6 +27,7 @@ const Task = (props) => {
             done: !state.done
         })
     }
+
     return (
         <View style={styles.view}>
             <Text>{state.name}</Text>
