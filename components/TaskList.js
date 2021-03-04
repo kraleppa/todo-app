@@ -1,7 +1,8 @@
 import React, {useState} from "react";
-import {FlatList, StyleSheet, View, Button, Modal, Alert, Text} from "react-native";
+import {FlatList, StyleSheet, View, Button, Modal, TextInput, Text} from "react-native";
 import { taskMock } from "../MockData";
 import Task from "./Task";
+import TaskModal from "./TaskModal";
 
 const styles = StyleSheet.create({
     container: {
@@ -14,21 +15,13 @@ const styles = StyleSheet.create({
 
 const TaskList = () => {
     const [modalVisible, setModalVisible] = useState(false);
+
     return (
         <View style={styles.container}>
-            <Modal
-                animationType="slide"
-                visible={modalVisible}
-                onRequestClose={() => {
-                    Alert.alert("Modal has been closed.");
-                    setModalVisible(!modalVisible);
-                }}
-            >
-                <Text>Eluwina</Text>
-                <Button title="Zamknij" onPress={() => setModalVisible(false)} />
-            </Modal>
 
+            <TaskModal modalVisible={modalVisible} closeModal={() => setModalVisible(false)} />
             <FlatList data={taskMock} renderItem={({item}) => <Task task={item}/>}/>
+
             <Button title="Dodaj" onPress={() => setModalVisible(true)}/>
         </View>
     );
