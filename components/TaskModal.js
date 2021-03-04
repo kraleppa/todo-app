@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Button, Modal, Text, TextInput, View, StyleSheet} from "react-native";
-import API_KEY from "./ApiKey"
+import {API_KEY} from "./ApiKey"
 
 const styles = StyleSheet.create({
     modal: {
@@ -22,16 +22,28 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center"
-    },
+    }
 })
 
 const TaskModal = ({modalVisible, closeModal}) => {
     const [name, setName] = useState("");
 
-
-
     const saveTask = () => {
-        console.log(name)
+        fetch('https://api.airtable.com/v0/appgcXYlwEoacIrsU/Tasks', {
+            method: 'POST',
+            headers: {
+                "Authorization": `Bearer ${API_KEY}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fields: {
+                    "name": name
+                }
+            })
+        })
+            .then(data => data.json())
+            .then(() => close())
+
     }
 
     const close = () => {
